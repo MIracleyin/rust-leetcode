@@ -52,11 +52,9 @@ impl Solution {
             offset += 2;
             lp -= 1;
         }
-
         if n % 2 != 0 {
             matrix[mid as usize][mid as usize] = n * n;
         }
-        
         matrix
     }
 }
