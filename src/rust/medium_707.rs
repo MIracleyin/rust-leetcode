@@ -63,6 +63,7 @@ impl MyLinkedList {
             let mut cur = &mut self.next;
             while let Some(node) = cur {
                 if n + 1 == index {
+                    // index is cur next
                     let new_node = Box::new(MyLinkedList {
                         val,
                         next: node.next.take(),
@@ -78,9 +79,9 @@ impl MyLinkedList {
 
     fn delete_at_index(&mut self, index: i32) {
         if index < 0 {
-            return
+            return;
         }
-        
+
         let mut n = 0;
         let mut cur = self;
         while let Some(node) = cur.next.take() {
@@ -92,7 +93,6 @@ impl MyLinkedList {
             cur.next = Some(node);
             cur = cur.next.as_mut().unwrap();
         }
-
     }
 }
 
