@@ -92,7 +92,7 @@ impl Solution {
 
 mod test {
     use super::Solution;
-    use crate::rust::{medium_707::*, medium_19::ListNode};
+    use crate::rust::listnode::{medium_707, medium_19::*};
 
     #[test]
     fn it_works() {
