@@ -5,7 +5,8 @@
  */
 
 // @lc code=start
-struct MyLinkedList {
+#[derive(Debug)]
+pub struct MyLinkedList {
     pub val: i32,
     pub next: Option<Box<MyLinkedList>>,
 }
@@ -15,11 +16,11 @@ struct MyLinkedList {
  * If you need a mutable reference, change it to `&mut self` instead.
  */
 impl MyLinkedList {
-    fn new() -> Self {
-        MyLinkedList { val: 0, next: None }
+    pub fn new(val: i32) -> Self {
+        MyLinkedList { val, next: None }
     }
 
-    fn get(&self, index: i32) -> i32 {
+    pub fn get(&self, index: i32) -> i32 {
         if index < 0 {
             return -1;
         }
@@ -37,7 +38,7 @@ impl MyLinkedList {
         -1
     }
 
-    fn add_at_head(&mut self, val: i32) {
+    pub fn add_at_head(&mut self, val: i32) {
         let new_node = Box::new(MyLinkedList {
             val,
             next: self.next.take(),
@@ -46,7 +47,7 @@ impl MyLinkedList {
         self.next = Some(new_node);
     }
 
-    fn add_at_tail(&mut self, val: i32) {
+    pub fn add_at_tail(&mut self, val: i32) {
         let new_node = Box::new(MyLinkedList { val, next: None });
         let mut cur = &mut self.next;
         while let Some(node) = cur {
@@ -55,7 +56,7 @@ impl MyLinkedList {
         *cur = Some(new_node)
     }
 
-    fn add_at_index(&mut self, index: i32, val: i32) {
+    pub fn add_at_index(&mut self, index: i32, val: i32) {
         if index <= 0 {
             self.add_at_head(val);
         } else {
@@ -77,7 +78,7 @@ impl MyLinkedList {
         }
     }
 
-    fn delete_at_index(&mut self, index: i32) {
+    pub fn delete_at_index(&mut self, index: i32) {
         if index < 0 {
             return;
         }
