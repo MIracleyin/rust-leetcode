@@ -4,3 +4,4 @@ mod hashmap;
 
 mod easy_344;
 mod easy_541;
+mod offer_05;
