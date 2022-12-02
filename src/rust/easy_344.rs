@@ -11,8 +11,7 @@ impl Solution {
         let (mut l, mut r) = (0, s.len() - 1);
 
         while l < r {
-            let lc = s[l];
-            let tc = lc;
+            let tc = s[l];
             s[l] = s[r];
             s[r] = tc;
             
