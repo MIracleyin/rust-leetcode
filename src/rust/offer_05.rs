@@ -1,7 +1,7 @@
 /*
- * @lc app=leetcode id=541 lang=rust
+ * @lc app=leetcode id=05 lang=rust
  *
- * [541] Reverse String II
+ * 
  */
 struct Solution;
 
