@@ -43,7 +43,9 @@ mod tests {
 
     #[test]
     fn it_works() {
-        let tokens = vec!["2","1","+","3","*"];
+        let mut tokens = vec!["2","1","+","3","*"];
+        let tokens = tokens.into_iter().map(|e| String::from(e)).collect();
         let result = Solution::eval_rpn(tokens);
+        dbg!(result);
     }
 }
