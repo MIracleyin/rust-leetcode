@@ -18,10 +18,11 @@ impl Solution {
                 ')' => stack.push('('),
                 ']' => stack.push('['),
                 '}' => stack.push('{'),
-                _ => {
+                _ => { // left parentheses
                     if stack.is_empty() || stack.pop().unwrap() != s{
                         return false;
-                    }
+                    } // if stack is empty (no left parentheses match)
+                      // if stack last element 
                 }
             }
         }
@@ -30,3 +31,14 @@ impl Solution {
 }
 // @lc code=end
 
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn it_works() {
+        let s = "{[((]}))".to_string();
+        let res = Solution::is_valid(s);
+        assert_eq!(res, true);
+    }
+}
