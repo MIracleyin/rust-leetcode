@@ -13,7 +13,7 @@ pub struct Solution;
 //   pub left: Option<Rc<RefCell<TreeNode>>>,
 //   pub right: Option<Rc<RefCell<TreeNode>>>,
 // }
-// 
+//
 // impl TreeNode {
 //   #[inline]
 //   pub fn new(val: i32) -> Self {
@@ -24,10 +24,10 @@ pub struct Solution;
 //     }
 //   }
 // }
-use std::rc::Rc;
 use std::cell::RefCell;
+use std::rc::Rc;
 impl Solution {
-    pub fn inorder_traversal(root: Option<Rc<RefCell<TreeNode>>>) -> Vec<i32> {
+    pub fn inorder_traversal_v1(root: Option<Rc<RefCell<TreeNode>>>) -> Vec<i32> {
         let mut res = Vec::new();
         Self::traversal(&root, &mut res);
         res
@@ -39,6 +39,21 @@ impl Solution {
             Self::traversal(&node.borrow().right, res);
         }
     }
+    pub fn inorder_traversal(root: Option<Rc<RefCell<TreeNode>>>) -> Vec<i32> {
+        let mut res = Vec::new();
+        let mut stack = Vec::new();
+        let mut cur = root;
+        while !stack.is_empty() || cur.is_some() {
+            while let Some(node) = cur {
+                cur = node.borrow().left.clone();
+                stack.push(node);
+            }
+            if let Some(node) = stack.pop() {
+                res.push(node.borrow().val); // mid
+                cur = node.borrow().right.clone();
+            }
+        }
+        res
+    }
 }
 // @lc code=end
-

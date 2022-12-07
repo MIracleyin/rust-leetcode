@@ -28,7 +28,7 @@ use std::rc::Rc;
 use std::cell::RefCell;
 
 impl Solution {
-    pub fn preorder_traversal(root: Option<Rc<RefCell<TreeNode>>>) -> Vec<i32> {
+    pub fn preorder_traversal_v1(root: Option<Rc<RefCell<TreeNode>>>) -> Vec<i32> {
         let mut res = Vec::new();
         Self::traversal(&root, &mut res);
         res
@@ -40,6 +40,19 @@ impl Solution {
             Self::traversal(&node.borrow().left, res);
             Self::traversal(&node.borrow().right, res);
         }
+    }
+
+    pub fn preorder_traversal(root: Option<Rc<RefCell<TreeNode>>>) -> Vec<i32> {
+        let mut res = Vec::new();
+        let mut stack = vec![root];
+        while !stack.is_empty() {
+            if let Some(node) = stack.pop().unwrap() {
+                res.push(node.borrow().val); // pop stack to vec
+                stack.push(node.borrow().right.clone());
+                stack.push(node.borrow().left.clone());
+            }
+        }
+        res
     }
 }
 // @lc code=end

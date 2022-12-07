@@ -27,7 +27,7 @@ pub struct Solution;
 use std::rc::Rc;
 use std::cell::RefCell;
 impl Solution {
-    pub fn postorder_traversal(root: Option<Rc<RefCell<TreeNode>>>) -> Vec<i32> {
+    pub fn postorder_traversal_v1(root: Option<Rc<RefCell<TreeNode>>>) -> Vec<i32> {
         let mut res = Vec::new();
         Self::traversal(&root, &mut res);
         res
@@ -39,6 +39,19 @@ impl Solution {
             Self::traversal(&node.borrow().right, res);
             res.push(node.borrow().val);
         }
+    }
+
+    pub fn postorder_traversal(root: Option<Rc<RefCell<TreeNode>>>) -> Vec<i32> {
+        let mut res = Vec::new();
+        let mut stack = vec![root];
+        while !stack.is_empty() {
+            if let Some(node) = stack.pop().unwrap() {
+                res.push(node.borrow().val);
+                stack.push(node.borrow().left.clone());
+                stack.push(node.borrow().right.clone());
+            }
+        }
+        res.into_iter().rev().collect()
     }
 }
 // @lc code=end

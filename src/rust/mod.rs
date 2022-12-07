@@ -7,6 +7,7 @@ mod stack_queue;
 mod string;
 mod easy_144;
 mod easy_145;
+mod easy_94;
 
 #[derive(Debug, PartialEq, Eq)]
 pub struct TreeNode {
