@@ -39,7 +39,7 @@ impl Solution {
             Self::traversal(&node.borrow().right, res);
         }
     }
-    pub fn inorder_traversal(root: Option<Rc<RefCell<TreeNode>>>) -> Vec<i32> {
+    pub fn inorder_traversal_v2(root: Option<Rc<RefCell<TreeNode>>>) -> Vec<i32> {
         let mut res = Vec::new();
         let mut stack = Vec::new();
         let mut cur = root;
@@ -51,6 +51,28 @@ impl Solution {
             if let Some(node) = stack.pop() {
                 res.push(node.borrow().val); // mid
                 cur = node.borrow().right.clone();
+            }
+        }
+        res
+    }
+    pub fn inorder_traversal(root: Option<Rc<RefCell<TreeNode>>>) -> Vec<i32> {
+        let mut res = Vec::new();
+        let mut stack = Vec::new();
+        if root.is_some() {
+            stack.push(root);
+        }
+        while !stack.is_empty() {
+            if let Some(node) = stack.pop().unwrap() {
+                if node.borrow().right.is_some() {
+                    stack.push(node.borrow().right.clone());
+                }
+                stack.push(Some(node.clone()));
+                stack.push(None);
+                if node.borrow().left.is_some() {
+                    stack.push(node.borrow().left.clone());
+                }
+            } else {
+                res.push(stack.pop().unwrap().unwrap().borrow().val)
             }
         }
         res

@@ -42,7 +42,7 @@ impl Solution {
         }
     }
 
-    pub fn preorder_traversal(root: Option<Rc<RefCell<TreeNode>>>) -> Vec<i32> {
+    pub fn preorder_traversal_v2(root: Option<Rc<RefCell<TreeNode>>>) -> Vec<i32> {
         let mut res = Vec::new();
         let mut stack = vec![root];
         while !stack.is_empty() {
@@ -50,6 +50,28 @@ impl Solution {
                 res.push(node.borrow().val); // pop stack to vec
                 stack.push(node.borrow().right.clone());
                 stack.push(node.borrow().left.clone());
+            }
+        }
+        res
+    }
+    pub fn preorder_traversal(root: Option<Rc<RefCell<TreeNode>>>) -> Vec<i32> {
+        let mut res = Vec::new();
+        let mut stack = Vec::new();
+        if root.is_some() {
+            stack.push(root);
+        }
+        while !stack.is_empty() {
+            if let Some(node) = stack.pop().unwrap() {
+                if node.borrow().right.is_some() {
+                    stack.push(node.borrow().right.clone());
+                }
+                if node.borrow().left.is_some() {
+                    stack.push(node.borrow().left.clone());
+                }
+                stack.push(Some(node));
+                stack.push(None);
+            } else {
+                res.push(stack.pop().unwrap().unwrap().borrow().val)
             }
         }
         res
