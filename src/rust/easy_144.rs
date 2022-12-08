@@ -3,7 +3,7 @@
  *
  * [144] Binary Tree Preorder Traversal
  */
-use crate::rust::TreeNode;
+use crate::rust::tree::TreeNode;
 pub struct Solution;
 // @lc code=start
 // Definition for a binary tree node.
