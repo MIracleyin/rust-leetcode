@@ -15,6 +15,8 @@ mod medium_107;
 mod medium_199;
 mod easy_637;
 
+mod easy_226;
+
 
 
 

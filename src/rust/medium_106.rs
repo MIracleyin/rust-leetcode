@@ -3,7 +3,8 @@
  *
  * [106] Construct Binary Tree from Inorder and Postorder Traversal
  */
-
+struct Solution;
+use crate::rust::tree::TreeNode;
 // @lc code=start
 // Definition for a binary tree node.
 // #[derive(Debug, PartialEq, Eq)]
