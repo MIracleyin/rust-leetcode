@@ -48,7 +48,6 @@ impl Solution {
         let mut root = TreeNode::new(val);
         root.left = Self::build_tree(preorder_left, inorder_left);
         root.right = Self::build_tree(preorder_right, inorder_right);
-
         Some(Rc::new(RefCell::new(root)))
     }
 }

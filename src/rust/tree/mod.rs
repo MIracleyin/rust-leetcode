@@ -1,3 +1,18 @@
+mod easy_144;
+mod easy_145;
+mod easy_94;
+mod medium_102;
+mod medium_107;
+mod medium_199;
+mod easy_637;
+
+mod easy_226;
+// mod easy_101;
+// mod easy_104;
+
+mod medium_106;
+mod medium_105;
+
 use std::cell::RefCell;
 use std::rc::Rc;
 #[derive(Debug, Clone, PartialEq, Eq)]
@@ -21,9 +36,9 @@ impl TreeNode {
         return self.val;
     }
 
-    pub fn set_val(&mut self, val: i32) -> i32{
-         self.val = val;
-         self.get_val()
+    pub fn set_val(&mut self, val: i32) -> i32 {
+        self.val = val;
+        self.get_val()
     }
 
     pub fn insert(&mut self, dir: &str, node: TreeNode) {
@@ -31,14 +46,63 @@ impl TreeNode {
         match dir {
             "left" => {
                 self.left = Some(Rc::new(RefCell::new(node)));
-            },
+            }
             "right" => {
                 self.right = Some(Rc::new(RefCell::new(node)));
-            },
+            }
             _ => {
                 panic!("Insert Error: only left and right supported");
-            },
+            }
         }
+    }
+
+    pub fn build_tree_ip(inorder: Vec<i32>, postorder: Vec<i32>) -> Option<Rc<RefCell<TreeNode>>> {
+        let len = postorder.len();
+        if len == 0 {
+            return None;
+        }
+
+        // get root val
+        let val = postorder[len - 1];
+
+        // get root val idx
+        let idx = inorder.iter().position(|&x| x == val).unwrap();
+
+        // cut inorder array
+        let inorder_left = inorder[..idx].to_vec();
+        let inorder_right = inorder[idx + 1..].to_vec();
+
+        let postorder_left = postorder[..idx].to_vec();
+        let postorder_right = postorder[idx..len - 1].to_vec();
+        let mut root = TreeNode::new(val);
+
+        root.left = Self::build_tree_ip(inorder_left, postorder_left);
+        root.right = Self::build_tree_ip(inorder_right, postorder_right);
+
+        Some(Rc::new(RefCell::new(root)))
+    }
+
+    pub fn build_tree_pi(preorder: Vec<i32>, inorder: Vec<i32>) -> Option<Rc<RefCell<TreeNode>>> {
+        let len = preorder.len();
+        if len == 0 {
+            return None;
+        }
+
+        let val = preorder[0];
+
+        // get root val idx
+        let idx = inorder.iter().position(|&x| x == val).unwrap();
+
+        // cur inorder array
+        let inorder_left = inorder[..idx].to_vec();
+        let inorder_right = inorder[idx + 1..].to_vec();
+
+        let preorder_left = preorder[1..idx + 1].to_vec();
+        let preorder_right = preorder[idx + 1..].to_vec();
+        let mut root = TreeNode::new(val);
+        root.left = Self::build_tree_pi(preorder_left, inorder_left);
+        root.right = Self::build_tree_pi(preorder_right, inorder_right);
+        Some(Rc::new(RefCell::new(root)))
     }
 
     pub fn insert_left_node(&mut self, val: i32) {
@@ -145,7 +209,5 @@ fn test_insert_tree() {
     node1.insert("right", node4);
     node2.insert("right", node5);
 
-
     dbg!(root);
 }
-

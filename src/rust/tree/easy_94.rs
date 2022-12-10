@@ -79,3 +79,17 @@ impl Solution {
     }
 }
 // @lc code=end
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn it_works() {
+        let preorder = vec![5,4,1,2,6,7,8];
+        let inorder = vec![1,4,2,5,7,6,8];
+        let tree = TreeNode::build_tree_pi(preorder.clone(), inorder.clone());
+        let res = Solution::inorder_traversal(tree);
+        assert_eq!(inorder, res);
+    }
+}
