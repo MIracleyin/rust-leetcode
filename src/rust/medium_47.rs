@@ -43,3 +43,9 @@ impl Solution {
     }
 }
 // @lc code=end
+#[test]
+fn it_works() {
+    let nums = vec![1, 1, 2];
+    let res = Solution::permute_unique(nums);
+    dbg!(res);
+}

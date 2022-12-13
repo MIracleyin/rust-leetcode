@@ -19,7 +19,7 @@ impl Solution {
         nums: &Vec<i32>,
         start_idx: usize,
     ) {
-        result.push(path.clone());
+        result.push(path.clone()); // push all path
         let len = nums.len();
         if start_idx >= len {
             return;
