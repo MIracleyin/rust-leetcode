@@ -22,3 +22,4 @@ mod medium_46;
 mod medium_47;
 
 mod hard_51;
+mod hard_37;
