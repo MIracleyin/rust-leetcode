@@ -18,3 +18,4 @@ mod easy_1005;
 mod medium_134;
 mod hard_135;
 mod easy_860;
+mod medium_406;
