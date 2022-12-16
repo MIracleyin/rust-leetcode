@@ -22,3 +22,4 @@ mod medium_406;
 mod medium_452;
 mod medium_435;
 mod medium_763;
+mod medium_56;
