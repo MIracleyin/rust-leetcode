@@ -24,4 +24,5 @@ mod medium_435;
 mod medium_763;
 mod medium_56;
 mod medium_738;
-mod medium_714;
+mod medium_714; // max_profit 2
+mod hard_968; // min_camera_cover
