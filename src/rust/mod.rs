@@ -15,3 +15,4 @@ mod medium_122;
 mod medium_55;
 mod medium_45;
 mod easy_1005;
+mod medium_134;
