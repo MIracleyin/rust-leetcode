@@ -12,7 +12,7 @@ impl Solution {
             if a[0] == b[0] { return a[1].cmp(&b[1]); } 
             b[0].cmp(&a[0])
         });
-        let mut que: Vec<Vec<i32>> = Vec::new();
+        let mut que: Vec<Vec<i32>> = Vec::with_capacity(people.len());
         que.push(people[0].clone());
         for i in 1..people.len() {
             let position = people[i][1];
