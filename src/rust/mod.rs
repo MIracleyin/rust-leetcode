@@ -9,3 +9,4 @@ mod greddy;
 
 mod easy_509;
 mod easy_70;
+mod easy_746;
