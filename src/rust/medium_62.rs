@@ -41,6 +41,7 @@ impl Solution {
                 dp[i][j] = dp[i-1][j] + dp[i][j-1];
             }
         }
+        dbg!(dp.clone());
         dp[m - 1][n - 1]
     }
 }
