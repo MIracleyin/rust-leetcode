@@ -26,7 +26,6 @@ impl Solution {
                 }
             }
         }
-        dbg!(dp.clone());
         dp[m][n]
     }
 }
