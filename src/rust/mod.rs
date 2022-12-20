@@ -17,3 +17,4 @@ mod medium_96;
 mod bag;
 mod medium_416;
 mod medium_1049;
+mod medium_494;
