@@ -33,6 +33,6 @@ impl Solution {
 #[test]
 fn it_works() {
     let strs = vec!["10".to_string(), "0001".to_string(), "111001".to_string(), "1".to_string(), "0".to_string()];
-    let (m, n) = (5, 3);
+    let (m, n) = (3, 3);
     Solution::find_max_form(strs, m, n);
 }

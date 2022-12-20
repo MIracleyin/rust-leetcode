@@ -24,17 +24,17 @@ fn zeroone_bag_v1(weight: Vec<i32>, value: Vec<i32>, bag_weight: usize) {
     }
 
     for i in 1..weight.len() {
-        for j in 1..=bag_weight {
-            if j < weight[i] as usize { // can put in
+        for j in 0..=bag_weight {
+            if j < weight[i] as usize {
+                // can put in
                 // can't put it in
-                dp[i][j] = dp[i - 1][j]
+                dp[i][j] = dp[i - 1][j];
             } else {
                 dp[i][j] = dp[i - 1][j].max(dp[i - 1][j - weight[i] as usize] + value[i]);
             }
         }
     }
     dbg!(dp.clone());
-
 }
 
 fn zeroone_bag(weight: Vec<i32>, value: Vec<i32>, bag_weight: usize) {
@@ -60,7 +60,6 @@ fn zeroone_bag(weight: Vec<i32>, value: Vec<i32>, bag_weight: usize) {
         }
     }
     dbg!(dp.clone());
-
 }
 
 #[test]
@@ -70,7 +69,6 @@ fn it_works() {
     let bag_weight = 4;
     zeroone_bag(weight, value, bag_weight);
 }
-
 
 #[test]
 fn it_works_v1() {
