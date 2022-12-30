@@ -29,3 +29,4 @@ mod medium_198;
 mod medium_213;
 mod medium_337;
 mod easy_121;
+mod medium_122;
