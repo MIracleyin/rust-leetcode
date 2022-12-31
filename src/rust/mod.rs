@@ -34,3 +34,4 @@ mod hard_123;
 mod hard_188;
 mod medium_309;
 mod medium_714;
+mod medium_300;
