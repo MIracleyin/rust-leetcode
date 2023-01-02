@@ -42,3 +42,4 @@ mod medium_1035;
 mod medium_53;
 mod easy_392;
 mod hard_115;
+mod medium_583;
