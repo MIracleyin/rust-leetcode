@@ -62,4 +62,12 @@ mod tests {
         }
         // println!("{}", n);
     }
+
+    // #[test]
+    // fn borrow() {
+    //     fn push(vec_ref: &mut Vec<i32>, x: i32) {
+    //         let vec = *vec_ref;
+    //         vec.push(x);
+    //     }
+    // }
 }
