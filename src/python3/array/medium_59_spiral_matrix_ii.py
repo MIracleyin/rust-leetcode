@@ -28,6 +28,8 @@ class Solution:
             start_x += 1
             start_y += 1
 
+
+
         if n % 2 != 0:
             nums[mid][mid] = count
         
