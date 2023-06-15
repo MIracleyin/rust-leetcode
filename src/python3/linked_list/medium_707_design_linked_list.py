@@ -13,13 +13,13 @@ class Node(object):
 class MyLinkedList(object):
 
     def __init__(self):
-        self.head = Node()
+        self.next = Node()
         self.size = 0
 
     def get(self, index: int) -> int:
         if index < 0 or index >= self.size:
             return -1
-        cur = self.head.next
+        cur = self.next.next
         while(index):
             cur = cur.next
             index -= 1
@@ -27,13 +27,13 @@ class MyLinkedList(object):
         
     def addAtHead(self, val: int) -> None:
         new_node = Node(val)
-        new_node.next = self.head.next
-        self.head.next = new_node
+        new_node.next = self.next.next
+        self.next.next = new_node
         self.size += 1
 
     def addAtTail(self, val: int) -> None:
         new_node = Node(val)
-        cur = self.head
+        cur = self.next
         while(cur.next):
             cur = cur.next
         cur.next = new_node
@@ -50,7 +50,7 @@ class MyLinkedList(object):
             return
     
         new_node = Node(val)
-        pre = self.head
+        pre = self.next
         while(index):
             pre = pre.next
             index -= 1
@@ -61,7 +61,7 @@ class MyLinkedList(object):
     def deleteAtIndex(self, index: int) -> None:
         if index < 0 or index >= self.size:
             return
-        pre = self.head
+        pre = self.next
         while(index):
             pre = pre.next
             index -= 1
