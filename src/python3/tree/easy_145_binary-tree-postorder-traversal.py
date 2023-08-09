@@ -26,7 +26,7 @@ class Solution:
 
         return left + right + [root.val]
     
-    def postorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+    def postorderTraversal_v2(self, root: Optional[TreeNode]) -> List[int]:
         if root is None:
             return []
         stack = [root]
@@ -39,7 +39,24 @@ class Solution:
             if node.right:
                 stack.append(node.right)
         return res[::-1]
-
+    def postorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        res = []
+        st = []
+        if root:
+            st.append(root)
+        while st:
+            node = st.pop()
+            if node != None:
+                st.append(node)
+                st.append(None)
+                if node.right:
+                    st.append(node.right)
+                if node.left:
+                    st.append(node.left)
+            else:
+                node = st.pop()
+                res.append(node.val)
+        return res
         
 # @lc code=end
 
