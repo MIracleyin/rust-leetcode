@@ -17,8 +17,15 @@ class TreeNode:
 #         self.right = right
 from typing import Optional
 import collections
-
 class Solution:
+    def maxDepth_v1(self, root: Optional[TreeNode]) -> int:
+        if root is None:
+            return 0
+        left_max_depth = self.maxDepth(root.left)
+        right_max_depth = self.maxDepth(root.right)
+        depth = 1 + max(left_max_depth, right_max_depth)
+        return depth
+
     def maxDepth(self, root: Optional[TreeNode]) -> int:
         if root is None:
             return 0
@@ -33,5 +40,9 @@ class Solution:
                 if cur.right:
                     queue.append(cur.right)
         return depth
+
+
+
+        
 # @lc code=end
 

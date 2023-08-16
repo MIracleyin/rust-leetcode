@@ -15,16 +15,27 @@ class TreeNode:
 #         self.val = val
 #         self.left = left
 #         self.right = right
-import collections
 from typing import Optional
-
+import collections
 
 class Solution:
+    def minDepth_v1(self, root: Optional[TreeNode]) -> int:
+        if root is None:
+            return 0
+        # left_depth = self.minDepth(root.left)
+        # right_depth = self.minDepth(root.right)
+
+        if root.left is None and root.right is not None:
+            return 1 + self.minDepth(root.right)
+        if root.left is not None and root.right is None:
+            return 1 + self.minDepth(root.left)
+        
+        return 1 + min(self.minDepth(root.left), self.minDepth(root.right))
     def minDepth(self, root: Optional[TreeNode]) -> int:
         if root is None:
             return 0
-        queue = collections.deque([root])
         depth = 0
+        queue = collections.deque([root])
         while queue:
             depth += 1
             for _ in range(len(queue)):
@@ -36,6 +47,8 @@ class Solution:
                 if cur.right:
                     queue.append(cur.right)
         return depth
+
+
         
 # @lc code=end
 
